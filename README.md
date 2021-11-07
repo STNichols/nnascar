@@ -2,7 +2,7 @@
 Training a car to drive itself through a track
 
 # Basics
-The base classes we will need:
+The base classes needed:
 - RaceTrack
 - Car
 - Laser
@@ -13,7 +13,7 @@ get the car around the track.
 
 # Demo
 
-A simple controller is created to test out features, and to see how difficult
+A simple controller is used to test out features, and to see how difficult
 it is to manually code how to drive
 
 ## Test Lap
