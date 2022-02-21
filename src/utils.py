@@ -19,9 +19,9 @@ def simple_drive(ranges, vel, acc):
     new_acc = 0
     steering_change = 0
     
-    left_range = ranges[1] #ranges[0] + ranges[1]
-    front_range = ranges[2]
-    right_range = ranges[3] #+ ranges[4]
+    left_range = ranges[3]
+    front_range = ranges[6]
+    right_range = ranges[9]
     
     steering_change = (
         (left_range - right_range) /

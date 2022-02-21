@@ -15,8 +15,8 @@ class Laser:
         self._range_resolution = range_resolution
         self._max_range = max_range
         self._theta_offset = theta_offset
-    
-    def get_range(self, x, y, theta):
+        
+    def get_range_array(self, x, y, theta):
         
         theta -= self._theta_offset
         
@@ -31,6 +31,12 @@ class Laser:
         
         y_rel = ranges * np.sin(theta)
         y_map = y + y_rel
+        
+        return ranges, x_map, y_map
+    
+    def get_range(self, x, y, theta):
+        
+        ranges, x_map, y_map = self.get_range_array(x, y, theta)
         
         last_in_bounds = self._racetrack.get_last_in_bounds_index(
             x_map, 

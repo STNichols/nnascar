@@ -19,7 +19,9 @@ from parameters import (
 
 class Car:
     
-    lidar_offsets = np.array([-90, -45, 0, 45, 90]) * DEG_TO_RAD
+    lidar_offsets = np.array(
+        [-90, -75, -60, -45, -30, -15, 0, 15, 30, 45, 60, 75, 90]
+    ) * DEG_TO_RAD
     lidar_range_resolution = LIDAR_RANGE_RESOLUTION
     lidar_max_range = LIDAR_MAX_RANGE
     
@@ -120,3 +122,14 @@ class Car:
         ranges = np.array(ranges)
         
         return ranges
+
+    def get_lidar_ranges(self):
+        
+        for l_index, lidar in self.lidar_system.items():
+            ranges, x_map, y_map = lidar.get_range_array(
+                self._pos_x,
+                self._pos_y,
+                self._theta
+            )
+        
+        last_in_bounds = self._racetrack.get_last_in_bounds_index(

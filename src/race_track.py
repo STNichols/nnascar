@@ -38,7 +38,7 @@ class RaceTrack:
         self.track_r_max = track_r_max
         self.track_width = track_width
         
-        self._ax = ax
+        self.ax = ax
         
         self.generate_track_grid()
         
@@ -103,8 +103,7 @@ class RaceTrack:
         
         min_check = r_actual >= r_min
         max_check = r_actual <= r_max
-        both_check = np.vstack([min_check, max_check])
-        in_bounds = both_check.all(axis=0)
+        in_bounds = min_check & max_check
         
         return in_bounds
     
